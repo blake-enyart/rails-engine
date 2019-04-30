@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :invoice_item do
     item
     invoice
-    quantity { 1 }
-    unit_price { 1 }
+    sequence(:quantity) { |n| "#{n}".to_i }
+    sequence(:unit_price) { |n| "#{n}".to_i }
   end
 end
