@@ -8,10 +8,16 @@ Rails.application.routes.draw do
         get '/most_revenue', to: 'most_revenue#index'
         get '/revenue', to: 'revenue#show'
         get '/most_items', to: 'most_items#index'
-        get '/:id/items', to: 'items#index'
-        get '/:id/invoices', to: 'invoices#index'
       end
-      resources :merchants, only: [:show, :index]
+
+      resources :merchants, :show do
+        get '/invoices', to: 'merchants/invoices#index'
+        get '/items', to: 'merchants/items#index'
+        get '/revenue', to: 'merchants/revenue#show'
+        get '/favorite_customer', to: 'merchants/favorite_customer#show'
+      end
+
+      resources :merchants, only: [:index]
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
