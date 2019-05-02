@@ -50,6 +50,22 @@ describe "Merchants API" do
       expect(items[0]['attributes']['name']).to eq(items_list[0].name)
       expect(items[0]['attributes']['name']).to_not eq(diff_items[0].name)
     end
+
+    it "can return a collection of invoice_items from a merchant" do
+      merchant = create(:merchant)
+      invoices_list = create_list(:invoice, 5, merchant: merchant)
+      diff_invoices = create_list(:invoice, 5)
+
+      get "/api/v1/merchants/#{merchant.id}/invoices"
+
+      expect(response).to be_successful
+
+      invoices = JSON.parse(response.body)['data']
+
+      expect(invoices.count).to eq(5)
+      expect(invoices[0]['attributes']['name']).to eq(invoices_list[0].name)
+      expect(invoices[0]['attributes']['name']).to_not eq(diff_invoices[0].name)
+    end
   end
 
   describe 'find' do
