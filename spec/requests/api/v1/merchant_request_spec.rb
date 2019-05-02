@@ -63,8 +63,8 @@ describe "Merchants API" do
       invoices = JSON.parse(response.body)['data']
 
       expect(invoices.count).to eq(5)
-      expect(invoices[0]['attributes']['name']).to eq(invoices_list[0].name)
-      expect(invoices[0]['attributes']['name']).to_not eq(diff_invoices[0].name)
+      expect(invoices[0]['attributes']['merchant_id']).to eq(invoices_list[0].merchant_id)
+      expect(invoices[0]['attributes']['merchant_id']).to_not eq(diff_invoices[0].merchant_id)
     end
   end
 
