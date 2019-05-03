@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       end
       resources :items, :show do
         get '/best_day', to: 'items/best_day#show'
+        get '/invoice_items', to: 'items/invoice_items#index'
+        get '/merchant', to: 'items/merchants#show'
       end
 
       #Customer Routes
