@@ -23,6 +23,9 @@ Rails.application.routes.draw do
         get '/most_revenue', to: 'most_revenue#index'
         get '/most_items', to: 'most_items#index'
       end
+      resources :items, :show do
+        get '/best_day', to: 'items/best_day#show'
+      end
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
