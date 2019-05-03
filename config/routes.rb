@@ -26,6 +26,11 @@ Rails.application.routes.draw do
       resources :items, :show do
         get '/best_day', to: 'items/best_day#show'
       end
+
+      #Customer Routes
+      resources :customers, :show do
+        get '/favorite_merchant', to: 'customers/favorite_merchant#show'
+      end
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
