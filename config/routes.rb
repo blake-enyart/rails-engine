@@ -48,6 +48,11 @@ Rails.application.routes.draw do
         get '/invoice', to: 'invoice_items/invoices#show'
         get '/item', to: 'invoice_items/items#show'
       end
+
+      #Transaction Routes
+      resources :transactions, :show do
+        get '/invoice', to: 'transactions/invoices#show'
+      end
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
