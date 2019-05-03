@@ -31,6 +31,11 @@ Rails.application.routes.draw do
       resources :customers, :show do
         get '/favorite_merchant', to: 'customers/favorite_merchant#show'
       end
+
+      #Invoice Routes
+      resources :invoices, :show do
+        get '/transactions', to: 'invoices/transactions#index'
+      end
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
