@@ -29,17 +29,17 @@
 
 ## JSON:API Endpoint Exploration
 
- Observe various API endpoints by the following steps:
+Observe various API endpoints by the following steps:
 
- Navigate to this directory and start-up the localhost server with
- ```
- rails s
- ```
+Start-up the localhost server with
+```
+rails s
+```
 
- In a separate terminal, query the available routes with
- ```
- rails routes
- ```
+In a separate terminal, query the available routes with
+```
+rails routes
+```
 
 Copy any of those URIs and append to the `localhost:3000/` in your browser.
 
