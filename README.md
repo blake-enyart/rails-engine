@@ -17,14 +17,17 @@ Clone down the repository with
 ```
 git clone git@github.com:blake-enyart/rails-engine.git
 ```
+
 Install the requisite gem dependencies
 ```
 bundle install
 ```
+
 Setup the database using
 ```
 rails db:{drop,create,migrate}
 ```
+
 Load data into the database using
 ```
 rake import:{customers,merchants,items,invoices,invoice_items,transactions}
@@ -38,10 +41,12 @@ Start-up the localhost server with
 ```
 rails s
 ```
+
 in a separate terminal, query the available routes with
 ```
 rails routes
 ```
+
 copy any of those URIs and append to the `localhost:3000/` in your browser.
 
 **NOTE:** For those that require an `id` please replace the `:id` in URIs with an integer number to observe the output
