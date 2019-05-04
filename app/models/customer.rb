@@ -1,13 +1,10 @@
 class Customer < ApplicationRecord
   has_many :invoices
 
+  scope :sorted, -> { order(id: :asc) }
+
   def self.best_customer_for_merchant(merchant_id)
-     joins(invoices: :transactions)
-     .where(invoices: {merchant_id: merchant_id}, transactions: {result: 1})
-     .select('customers.*, SUM(transactions.result) AS transaction_count')
-     .group(:id)
-     .order('transaction_count DESC')
-     .first
+
   end
 
   def self.favorite_merchant(customer_id)

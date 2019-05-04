@@ -2,6 +2,8 @@ class Merchant < ApplicationRecord
   has_many :items
   has_many :invoices
 
+  scope :sorted, -> { order(id: :asc) }
+
   def self.most_revenue(quantity)
     joins(invoices: [:invoice_items, :transactions])
     .where(transactions: {result: 1 })
@@ -33,6 +35,11 @@ class Merchant < ApplicationRecord
   end
 
   def self.best_customer_for_merchant(merchant_id)
-    Customer.best_customer_for_merchant(merchant_id)
+    Customer.joins(invoices: :transactions)
+            .where(invoices: {merchant_id: merchant_id}, transactions: {result: 1})
+            .select('customers.*, SUM(transactions.result) AS transaction_count')
+            .group(:id)
+            .order('transaction_count DESC')
+            .first
   end
 end

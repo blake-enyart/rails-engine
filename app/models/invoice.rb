@@ -5,6 +5,8 @@ class Invoice < ApplicationRecord
   has_many :invoice_items
   has_many :items, through: :invoice_items
 
+  scope :sorted, -> { order(id: :asc) }
+
   enum status: [:unshipped, :shipped]
 
   def self.total_revenue_date(date)
