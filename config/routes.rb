@@ -20,6 +20,35 @@ Rails.application.routes.draw do
       resources :merchants, only: [:index]
     end
 
+    #Customer Routes
+    namespace :v1 do
+      namespace :customers do
+        get '/find', to: 'search#show', as: :find_customer
+        get '/random', to: 'search#show', params: {random: true}
+        get '/find_all', to: 'search#index', as: :find_customers
+      end
+      resources :customers, :show do
+        get '/favorite_merchant', to: 'customers/favorite_merchant#show'
+        get '/invoices', to: 'customers/invoices#index'
+        get '/transactions', to: 'customers/transactions#index'
+      end
+      resources :customers, only: [:index]
+    end
+
+    #InvoiceItem Routes
+    namespace :v1 do
+      namespace :invoice_items do
+        get '/find', to: 'search#show', as: :find_invoice_item
+        get '/random', to: 'search#show', params: {random: true}
+        get '/find_all', to: 'search#index', as: :find_invoice_items
+      end
+      resources :invoice_items, :show do
+        get '/invoice', to: 'invoice_items/invoices#show'
+        get '/item', to: 'invoice_items/items#show'
+      end
+      resources :invoice_items, only: [:index]
+    end
+
     #Item Routes
     namespace :v1 do
       namespace :items do
@@ -35,21 +64,6 @@ Rails.application.routes.draw do
         get '/merchant', to: 'items/merchants#show'
       end
       resources :items, only: [:index]
-    end
-
-    #Customer Routes
-    namespace :v1 do
-      namespace :customers do
-        get '/find', to: 'search#show', as: :find_customer
-        get '/random', to: 'search#show', params: {random: true}
-        get '/find_all', to: 'search#index', as: :find_customers
-      end
-      resources :customers, :show do
-        get '/favorite_merchant', to: 'customers/favorite_merchant#show'
-        get '/invoices', to: 'customers/invoices#index'
-        get '/transactions', to: 'customers/transactions#index'
-      end
-      resources :customers, only: [:index]
     end
 
     #Invoice Routes
@@ -69,20 +83,6 @@ Rails.application.routes.draw do
       resources :invoices, only: [:index]
     end
 
-    #InvoiceItem Routes
-    namespace :v1 do
-      namespace :invoice_items do
-        get '/find', to: 'search#show', as: :find_invoice_item
-        get '/random', to: 'search#show', params: {random: true}
-        get '/find_all', to: 'search#index', as: :find_invoice_items
-      end
-      resources :invoice_items, :show do
-        get '/invoice', to: 'invoice_items/invoices#show'
-        get '/item', to: 'invoice_items/items#show'
-      end
-      resources :invoice_items, only: [:index]
-    end
-
     #Transaction Routes
     namespace :v1 do
       namespace :transactions do
@@ -96,5 +96,4 @@ Rails.application.routes.draw do
       resources :transactions, only: [:index]
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

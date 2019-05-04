@@ -54,4 +54,11 @@ class Merchant < ApplicationRecord
                             INNER JOIN customers c ON c.id = i.customer_id
                             WHERE t.result = 1 AND i.merchant_id = :merchant_id;", { :merchant_id => merchant_id }]
   end
+
+  def self.total_revenue_date(date)
+    Invoice.joins(:transactions, :invoice_items)
+           .select('SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue, invoices.updated_at::timestamp::date AS date')
+           .group('date')
+           .where('invoices.updated_at::timestamp::date = ? AND transactions.result = 1', date)[0]
+  end
 end
