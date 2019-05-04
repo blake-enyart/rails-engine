@@ -10,7 +10,7 @@
 
 ### Prequisites
  * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby version
- * [Rails 5.2.3](http://sinatrarb.com/) - Web Framework
+ * [Rails 5.2.3](https://rubyonrails.org/) - Web Framework
 
 ### Installation
 
