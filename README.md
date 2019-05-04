@@ -14,23 +14,16 @@
 
 ### Installation
 
- Clone down the repository with
+ To use this repository, simply clone it onto your machine and bundle:
  ```
  git clone git@github.com:blake-enyart/rails-engine.git
+ cd rails-engine
+ bundle
  ```
 
- Install the requisite gem dependencies
- ```
- bundle install
- ```
-
- Setup the database using
+ Setup the database and load in data:
  ```
  rails db:{drop,create,migrate}
- ```
-
- Load data into the database using
- ```
  rake import:{customers,merchants,items,invoices,invoice_items,transactions}
  ```
 
@@ -68,11 +61,21 @@ Example of expected output
 ```
 
 
-## How to run the test suite
+## Usage
 
-From the command line interface(CLI), run
+Run test with `rspec`: 
  ```
- rspec
+ $ rspec
+
+Randomized with seed 38704
+.............................
+
+Finished in 0.60246 seconds (files took 3.75 seconds to load)
+29 examples, 0 failures
+
+Randomized with seed 38704
+
+Coverage report generated for RSpec to /Users/blakeenyart/turing/3module/projects/rails-engine/coverage. 75 / 87 LOC (86.21%) covered.
  ```
 
 ## Author
