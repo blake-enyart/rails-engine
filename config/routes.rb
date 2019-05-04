@@ -22,12 +22,16 @@ Rails.application.routes.draw do
       namespace :items do
         get '/most_revenue', to: 'most_revenue#index'
         get '/most_items', to: 'most_items#index'
+        get '/find', to: 'search#show', as: :find_item
+        get '/random', to: 'search#show', params: {random: true}
+        get '/find_all', to: 'search#index', as: :find_items
       end
       resources :items, :show do
         get '/best_day', to: 'items/best_day#show'
         get '/invoice_items', to: 'items/invoice_items#index'
         get '/merchant', to: 'items/merchants#show'
       end
+      resources :items, only: [:index]
 
       #Customer Routes
       resources :customers, :show do
