@@ -1,5 +1,4 @@
 class Api::V1::InvoiceItems::SearchController < ApplicationController
-
   def show
     if params[:random]
       render json: InvoiceItemSerializer.new(InvoiceItem.sample)

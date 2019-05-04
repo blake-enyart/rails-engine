@@ -1,10 +1,10 @@
 class Api::V1::Transactions::SearchController < ApplicationController
-
   def show
     if params[:random]
-      return render json: TransactionSerializer.new(Transaction.sample)
+      render json: TransactionSerializer.new(Transaction.sample)
+    else
+      render json: TransactionSerializer.new(Transaction.where(transaction_params).first)
     end
-    render json: TransactionSerializer.new(Transaction.where(transaction_params).first)
   end
 
   def index
