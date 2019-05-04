@@ -6,7 +6,7 @@ This is a [Turing: School of Software and Development](https://turing.io/) proje
 * Serializing ActiveRecord queries via [Fast JSON API](https://github.com/Netflix/fast_jsonapi)
 * [JSON:API compliance](https://jsonapi.org/)
 
-### Getting Started
+## Getting Started
 
 #### Prequisites
 * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby version
@@ -31,6 +31,7 @@ rake import:{customers,merchants,items,invoices,invoice_items,transactions}
 ```
 
 ### JSON:API Endpoint Exploration
+
 Observe various API endpoints by the following steps:
 
 Start-up the localhost server with
@@ -46,6 +47,7 @@ copy any of those URIs and append to the 'localhost:3000/' in your browser.
 **NOTE:** For those that require an `id` please replace the `:id` in URIs with an integer number to observe the output
 
 ### How to run the test suite
+
 From the command line interface(CLI), run
  ```
  rspec
