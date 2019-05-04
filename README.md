@@ -61,7 +61,7 @@ Example of expected output
 ```
 
 
-## Usage
+## Test Implementation
 
 Run test with `rspec`: 
  ```
