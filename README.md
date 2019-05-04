@@ -61,4 +61,4 @@ From the command line interface(CLI), run
 
 ## Author
 
- * **Blake Enyart** - *JSON:API endpoint development in RoR and advanced ActiveRecord queries in PostgreSQL database* - [RailsEngine](https://github.com/blake-enyart/rails-engine)
+ * **Blake Enyart** - *JSON:API endpoints and ActiveRecord queries in PostgreSQL database* - [RailsEngine](https://github.com/blake-enyart/rails-engine)
