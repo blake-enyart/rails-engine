@@ -2,13 +2,14 @@ class Api::V1::Invoices::SearchController < ApplicationController
 
   def show
     if params[:random]
-      return render json: InvoiceSerializer.new(Invoice.sample)
+      render json: InvoiceSerializer.new(Invoice.sample)
+    else
+      render json: InvoiceSerializer.new(Invoice.where(invoice_params).first)
     end
-    render json: InvoiceSerializer.new(Invoice.where(invoice_params).first)
   end
 
   def index
-    render json: InvoiceSerializer.new(Invoice.where(invoice_params))
+    render json: InvoiceSerializer.new(Invoice.sorted.where(invoice_params))
   end
 
   private

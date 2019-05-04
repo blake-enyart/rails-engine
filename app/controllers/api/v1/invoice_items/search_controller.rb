@@ -14,7 +14,7 @@ class Api::V1::InvoiceItems::SearchController < ApplicationController
     if params[:unit_price]
       render json: InvoiceItemSerializer.new(InvoiceItem.where(unit_price: unit_price_params))
     else
-      render json: InvoiceItemSerializer.new(InvoiceItem.where(invoice_item_params))
+      render json: InvoiceItemSerializer.new(InvoiceItem.sorted.where(invoice_item_params))
     end
   end
 
