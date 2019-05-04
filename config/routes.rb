@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       #Customer Routes
       resources :customers, :show do
         get '/favorite_merchant', to: 'customers/favorite_merchant#show'
+        get '/invoices', to: 'customers/invoices#index'
+        get '/transactions', to: 'customers/transactions#index'
       end
 
       #Invoice Routes
