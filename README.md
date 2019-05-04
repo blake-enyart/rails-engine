@@ -38,7 +38,7 @@
 
  Observe various API endpoints by the following steps:
 
- Start-up the localhost server with
+ Navigate to this directory and start-up the localhost server with
  ```
  rails s
  ```
