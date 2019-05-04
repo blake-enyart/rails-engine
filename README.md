@@ -42,7 +42,7 @@ in a separate terminal, query the available routes with
 ```
 rails routes
 ```
-copy any of those URIs and append to the 'localhost:3000/' in your browser.
+copy any of those URIs and append to the `localhost:3000/` in your browser.
 
 **NOTE:** For those that require an `id` please replace the `:id` in URIs with an integer number to observe the output
 
