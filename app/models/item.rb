@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
+  default_scope { order(id: :asc) }
+
   def self.most_revenue(quantity)
     joins(invoice_items: {invoice: :transactions})
     .where(transactions: {result: 1 })
