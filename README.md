@@ -1,6 +1,6 @@
 # README
 
-##Rales Engine
+## Rales Engine
 Implementation of Rails and ActiveRecord to build a JSON:API which exposes the [SalesEngine](https://github.com/turingschool-examples/sales_engine/tree/master/data) data schema based on [Turing - Module 3 - Rales Engine](http://backend.turing.io/module3/projects/rails_engine) requirements
 
 ### Concepts and Techniques
