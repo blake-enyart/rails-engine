@@ -52,6 +52,22 @@ Copy any of those URIs and append to the `localhost:3000/` in your browser.
 
 **NOTE:** For those that require an `id` please replace the `:id` in URIs with an integer number to observe the output
 
+Example of expected output
+```
+
+{
+ data: {
+  id: null,
+  type: "one_merchant_revenue",
+  attributes: {
+  revenue: "1518.84"
+              }
+        }
+}
+
+```
+
+
 ## How to run the test suite
 
 From the command line interface(CLI), run
