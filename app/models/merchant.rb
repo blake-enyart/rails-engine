@@ -42,4 +42,16 @@ class Merchant < ApplicationRecord
             .order('transaction_count DESC')
             .first
   end
+
+  def self.customers_with_pending_invoices(merchant_id)
+    Customer.find_by_sql ["SELECT c.*, i.id invoice_id FROM invoices i
+                          LEFT OUTER JOIN transactions t ON t.invoice_id = i.id
+                          INNER JOIN customers c ON c.id = i.customer_id
+                          WHERE ((t.result IS NULL OR t.result = 0) AND i.merchant_id = :merchant_id)
+                          EXCEPT
+                            SELECT c.*, i.id invoice_id FROM invoices i
+                            INNER JOIN transactions t ON t.invoice_id = i.id
+                            INNER JOIN customers c ON c.id = i.customer_id
+                            WHERE t.result = 1 AND i.merchant_id = :merchant_id;", { :merchant_id => merchant_id }]
+  end
 end
