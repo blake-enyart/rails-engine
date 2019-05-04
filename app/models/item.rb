@@ -8,7 +8,8 @@ class Item < ApplicationRecord
   def self.most_revenue(quantity)
     joins(invoice_items: {invoice: :transactions})
     .where(transactions: {result: 1 })
-    .select("items.*, SUM(invoice_items.quantity * invoice_items.unit_price) as revenue")
+    .select("items.*,
+             SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
     .group(:id)
     .order("revenue DESC")
     .limit(quantity)
@@ -17,7 +18,8 @@ class Item < ApplicationRecord
   def self.most_items(quantity)
     joins(invoice_items: {invoice: :transactions})
     .where(transactions: {result: 1 })
-    .select("items.*, SUM(invoice_items.quantity) as most_items")
+    .select("items.*,
+             SUM(invoice_items.quantity) AS most_items")
     .group(:id)
     .order("most_items DESC")
     .limit(quantity)
@@ -26,7 +28,8 @@ class Item < ApplicationRecord
   def self.best_day(item_id)
     Invoice.joins(:items, :transactions)
            .where(items: {id: item_id}, transactions: {result: 1})
-           .select('invoices.updated_at::timestamp::date AS date, SUM(invoice_items.quantity * invoice_items.unit_price) as revenue')
+           .select('invoices.updated_at::timestamp::date AS date,
+                    SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue')
            .group('date')
            .order('revenue DESC, date DESC')[0]
   end

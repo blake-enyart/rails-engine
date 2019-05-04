@@ -7,7 +7,8 @@ class Merchant < ApplicationRecord
   def self.most_revenue(quantity)
     joins(invoices: [:invoice_items, :transactions])
     .where(transactions: {result: 1 })
-    .select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) as revenue")
+    .select("merchants.*,
+             SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
     .group(:id)
     .order("revenue DESC")
     .limit(quantity)
@@ -16,7 +17,7 @@ class Merchant < ApplicationRecord
   def self.most_revenue_for_merchant(merchant_id)
     joins(invoices: [:invoice_items, :transactions])
     .where(transactions: {result: 1 }, id: merchant_id)
-    .select("SUM(invoice_items.quantity * invoice_items.unit_price) as revenue")
+    .select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
     .group(:id)
     .first
   end
@@ -24,7 +25,7 @@ class Merchant < ApplicationRecord
   def self.most_items(quantity)
     joins(invoices: [:invoice_items, :transactions])
     .where(transactions: {result: 1 })
-    .select("merchants.*, SUM(invoice_items.quantity) as most_items")
+    .select("merchants.*, SUM(invoice_items.quantity) AS most_items")
     .group(:id)
     .order("most_items DESC")
     .limit(quantity)
@@ -57,7 +58,8 @@ class Merchant < ApplicationRecord
 
   def self.total_revenue_date(date)
     Invoice.joins(:transactions, :invoice_items)
-           .select('SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue, invoices.updated_at::timestamp::date AS date')
+           .select('SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue,
+                    invoices.updated_at::timestamp::date AS date')
            .group('date')
            .where('invoices.updated_at::timestamp::date = ? AND transactions.result = 1', date)[0]
   end

@@ -1,5 +1,4 @@
 class Api::V1::Merchants::SearchController < ApplicationController
-
   def show
     if params[:random]
       render json: MerchantSerializer.new(Merchant.sample)

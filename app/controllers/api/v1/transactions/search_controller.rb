@@ -1,5 +1,4 @@
 class Api::V1::Transactions::SearchController < ApplicationController
-
   def show
     if params[:random]
       render json: TransactionSerializer.new(Transaction.sample)

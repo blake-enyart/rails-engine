@@ -1,5 +1,4 @@
 class Api::V1::Items::SearchController < ApplicationController
-
   def show
     if params[:random]
       render json: ItemSerializer.new(Item.sample)

@@ -1,5 +1,4 @@
 class Api::V1::Customers::SearchController < ApplicationController
-
   def show
     if params[:random]
       render json: CustomerSerializer.new(Customer.sample)
