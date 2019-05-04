@@ -8,11 +8,11 @@ This is a [Turing: School of Software and Development](https://turing.io/) proje
 
 ## Getting Started
 
-#### Prequisites
+### Prequisites
 * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby version
 * [Rails 5.2.3](http://sinatrarb.com/) - Web Framework
 
-#### Installation
+### Installation
 Clone down the repository with
 ```
 git clone git@github.com:blake-enyart/rails-engine.git
@@ -30,7 +30,7 @@ Load data into the database using
 rake import:{customers,merchants,items,invoices,invoice_items,transactions}
 ```
 
-### JSON:API Endpoint Exploration
+## JSON:API Endpoint Exploration
 
 Observe various API endpoints by the following steps:
 
@@ -46,12 +46,13 @@ copy any of those URIs and append to the 'localhost:3000/' in your browser.
 
 **NOTE:** For those that require an `id` please replace the `:id` in URIs with an integer number to observe the output
 
-### How to run the test suite
+## How to run the test suite
 
 From the command line interface(CLI), run
  ```
  rspec
  ```
 
-### Author
+## Author
+
 * **Blake Enyart** - *JSON:API endpoint development in RoR and advanced ActiveRecord queries in PostgreSQL database* - [RailsEngine](https://github.com/blake-enyart/rails-engine)
