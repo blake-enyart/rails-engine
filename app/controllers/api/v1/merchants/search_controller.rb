@@ -3,12 +3,12 @@ class Api::V1::Merchants::SearchController < ApplicationController
     if params[:random]
       render json: MerchantSerializer.new(Merchant.sample)
     else
-      render json: MerchantSerializer.new(Merchant.where(merchant_params).first)
+      render json: MerchantSerializer.new(Merchant.attr_find(merchant_params, 1))
     end
   end
 
   def index
-    render json: MerchantSerializer.new(Merchant.where(merchant_params))
+    render json: MerchantSerializer.new(Merchant.attr_find(merchant_params))
   end
 
   private

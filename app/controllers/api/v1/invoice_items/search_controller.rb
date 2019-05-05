@@ -3,17 +3,17 @@ class Api::V1::InvoiceItems::SearchController < ApplicationController
     if params[:random]
       render json: InvoiceItemSerializer.new(InvoiceItem.sample)
     elsif params[:unit_price]
-      render json: InvoiceItemSerializer.new(InvoiceItem.where(unit_price: unit_price_params).first)
+      render json: InvoiceItemSerializer.new(InvoiceItem.unit_price_find(unit_price_params, 1))
     else
-      render json: InvoiceItemSerializer.new(InvoiceItem.where(invoice_item_params).first)
+      render json: InvoiceItemSerializer.new(InvoiceItem.attr_find(invoice_item_params, 1))
     end
   end
 
   def index
     if params[:unit_price]
-      render json: InvoiceItemSerializer.new(InvoiceItem.where(unit_price: unit_price_params))
+      render json: InvoiceItemSerializer.new(InvoiceItem.unit_price_find(unit_price_params))
     else
-      render json: InvoiceItemSerializer.new(InvoiceItem.sorted.where(invoice_item_params))
+      render json: InvoiceItemSerializer.new(InvoiceItem.sorted.attr_find(invoice_item_params))
     end
   end
 

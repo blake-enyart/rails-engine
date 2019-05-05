@@ -3,12 +3,12 @@ class Api::V1::Customers::SearchController < ApplicationController
     if params[:random]
       render json: CustomerSerializer.new(Customer.sample)
     else
-      render json: CustomerSerializer.new(Customer.where(customer_params).first)
+      render json: CustomerSerializer.new(Customer.attr_find(customer_params, 1))
     end
   end
 
   def index
-    render json: CustomerSerializer.new(Customer.where(customer_params))
+    render json: CustomerSerializer.new(Customer.attr_find(customer_params))
   end
 
   private
