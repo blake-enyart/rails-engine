@@ -8,7 +8,7 @@ class Api::V1::Transactions::SearchController < ApplicationController
   end
 
   def index
-    render json: TransactionSerializer.new(Transaction.sorted.attr_find(transaction_params))
+    render json: TransactionSerializer.new(Transaction.attr_find(transaction_params))
   end
 
   private

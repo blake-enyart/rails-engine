@@ -5,6 +5,10 @@ class ApplicationRecord < ActiveRecord::Base
     where(merchant_id: merchant_id)
   end
 
+  def self.transaction_find(transaction_id)
+    joins(:transactions).where(transactions: {id: transaction_id}).first
+  end
+
   def self.attr_find(params, limit = nil)
     if limit == 1
       where(params).first
