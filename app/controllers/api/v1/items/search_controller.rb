@@ -3,17 +3,17 @@ class Api::V1::Items::SearchController < ApplicationController
     if params[:random]
       render json: ItemSerializer.new(Item.sample)
     elsif params[:unit_price]
-      render json: ItemSerializer.new(Item.where(unit_price: unit_price_params).first)
+      render json: ItemSerializer.new(Item.unit_price_find(unit_price_params, 1))
     else
-      render json: ItemSerializer.new(Item.where(item_params).first)
+      render json: ItemSerializer.new(Item.attr_find(item_params, 1))
     end
   end
 
   def index
     if params[:unit_price]
-      render json: ItemSerializer.new(Item.where(unit_price: unit_price_params))
+      render json: ItemSerializer.new(Item.unit_price_find(unit_price_params))
     else
-      render json: ItemSerializer.new(Item.sorted.where(item_params))
+      render json: ItemSerializer.new(Item.sorted.attr_find(item_params))
     end
   end
 

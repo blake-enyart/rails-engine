@@ -3,12 +3,12 @@ class Api::V1::Transactions::SearchController < ApplicationController
     if params[:random]
       render json: TransactionSerializer.new(Transaction.sample)
     else
-      render json: TransactionSerializer.new(Transaction.where(transaction_params).first)
+      render json: TransactionSerializer.new(Transaction.attr_find(transaction_params, 1))
     end
   end
 
   def index
-    render json: TransactionSerializer.new(Transaction.sorted.where(transaction_params))
+    render json: TransactionSerializer.new(Transaction.sorted.attr_find(transaction_params))
   end
 
   private
