@@ -1,5 +1,5 @@
 class Api::V1::Customers::TransactionsController < ApplicationController
   def index
-    render json: TransactionSerializer.new(Transaction.joins(:invoice).where(invoices: {customer_id: params[:customer_id]}))
+    render json: TransactionSerializer.new(Transaction.transaction_to_customer_find(params[:customer_id]))
   end
 end
