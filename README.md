@@ -63,6 +63,7 @@ Example of expected output
 
 ## Test Implementation
 
+### Rspec
 Run test with `rspec`: 
  ```
  $ rspec
@@ -77,6 +78,34 @@ Randomized with seed 38704
 
 Coverage report generated for RSpec to /Users/blakeenyart/turing/3module/projects/rails-engine/coverage. 75 / 87 LOC (86.21%) covered.
  ```
+### SpecHarness
+
+From the `rails_engine` directory, run `rails s`.
+
+While the server is running and you are outside of the project folder run the following commands
+```
+git clone https://github.com/turingschool/rales_engine_spec_harness
+cd rales_engine_spec_harness
+bundle install
+bundle exec rake
+```
+
+The previous sequence will run a test suite that represents the specs which this project is intended to adhere to and provide an output similar to the follow:
+```
+$ bundle exec rake
+/Users/blakeenyart/.rbenv/versions/2.4.1/bin/ruby -I"lib:test" -I"/Users/blakeenyart/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/rake-10.4.2/lib" "/Users/blakeenyart/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/rake-10.4.2/lib/rake/rake_test_loader.rb" "test/business_logic/customer_business_logic_test.rb" "test/business_logic/item_business_logic_test.rb" "test/business_logic/merchant_business_logic_test.rb" "test/endpoints/customers_test.rb" "test/endpoints/invoice_items_test.rb" "test/endpoints/invoices_test.rb" "test/endpoints/items_test.rb" "test/endpoints/merchants_test.rb" "test/endpoints/transactions_test.rb" "test/relationships/customer_relationship_test.rb" "test/relationships/invoice_items_relationship_test.rb" "test/relationships/invoices_relationship_test.rb" "test/relationships/items_relationship_test.rb" "test/relationships/merchants_relationship_test.rb" "test/relationships/transactions_relationship_test.rb" 
+Run options: --seed 31042
+
+# Running:
+
+...........................................................................................................
+
+Fabulous run in 6.347828s, 16.8562 runs/s, 5742.4366 assertions/s.
+
+107 runs, 36452 assertions, 0 failures, 0 errors, 0 skips
+```
+
+Ignore the error messages in the output as the priority is the output after the `# Running` statement.
 
 ## Author
 
